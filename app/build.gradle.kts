@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("kotlin-android")
     kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 val composeVersion = "1.0.0-beta07"
@@ -45,6 +46,14 @@ android {
 }
 
 dependencies {
+    // region Dagger Hilt
+    val hiltVersion: String by project
+
+    kapt("androidx.hilt:hilt-compiler:1.0.0")
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-compiler:$hiltVersion")
+    // endregion
+
     implementation("androidx.core:core-ktx:1.5.0")
     implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.3.0")
@@ -56,6 +65,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
     implementation("androidx.activity:activity-compose:1.3.0-alpha08")
 
+    // region Network
     val retrofitVersion = "2.9.0"
     implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
     implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
@@ -64,17 +74,19 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
     implementation("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
     implementation("com.squareup.okhttp3:mockwebserver:$okhttpVersion")
+    implementation("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
 
     val moshiVersion = "1.12.0"
     implementation("com.squareup.moshi:moshi-kotlin:$moshiVersion")
     kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
 
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.amshove.kluent:kluent:1.65")
-
     val okreplayVersion = "1.6.0"
     testImplementation("com.airbnb.okreplay:okreplay:$okreplayVersion")
     testImplementation("com.airbnb.okreplay:junit:$okreplayVersion")
+
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.amshove.kluent:kluent:1.65")
+    // endregion
 
     val mockkVersion = "1.9.3"
     testImplementation("io.mockk:mockk:$mockkVersion")
