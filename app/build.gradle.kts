@@ -7,7 +7,6 @@ val compose_version = "1.0.0-beta07"
 
 android {
     compileSdk= 30
-
     defaultConfig {
         applicationId = "com.olderwold.reddit"
         minSdk = 23
@@ -20,12 +19,12 @@ android {
             useSupportLibrary = true
         }
     }
-
     buildTypes {
-//        release {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
-//        }
+        maybeCreate("release").apply {
+            isMinifyEnabled = false
+            proguardFile(getDefaultProguardFile("proguard-android-optimize.txt"))
+            proguardFile("proguard-rules.pro")
+        }
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
