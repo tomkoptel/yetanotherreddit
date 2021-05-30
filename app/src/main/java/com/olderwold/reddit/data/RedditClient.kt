@@ -55,7 +55,7 @@ interface RedditClient {
         }
     }
 
-    interface Api {
+    private interface Api {
         @GET("/r/Android/hot.json")
         suspend fun hotListing(
             @Query("limit") limit: Int,
