@@ -7,4 +7,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "yet-another-reddit"
-include ':app'
+include(":app")
