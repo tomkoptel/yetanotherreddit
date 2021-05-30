@@ -1,12 +1,13 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    kotlin("kapt")
 }
 
 val composeVersion = "1.0.0-beta07"
 
 android {
-    compileSdk= 30
+    compileSdk = 30
     defaultConfig {
         applicationId = "com.olderwold.reddit"
         minSdk = 23
@@ -55,7 +56,29 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
     implementation("androidx.activity:activity-compose:1.3.0-alpha08")
 
+    val retrofitVersion = "2.9.0"
+    implementation("com.squareup.retrofit2:retrofit:$retrofitVersion")
+    implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
+
+    val okhttpVersion = "4.4.1"
+    implementation("com.squareup.okhttp3:okhttp:$okhttpVersion")
+    implementation("com.squareup.okhttp3:logging-interceptor:$okhttpVersion")
+    implementation("com.squareup.okhttp3:mockwebserver:$okhttpVersion")
+
+    val moshiVersion = "1.12.0"
+    implementation("com.squareup.moshi:moshi-kotlin:$moshiVersion")
+    kapt("com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion")
+
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.amshove.kluent:kluent:1.65")
+
+    val okreplayVersion = "1.6.0"
+    testImplementation("com.airbnb.okreplay:okreplay:$okreplayVersion")
+    testImplementation("com.airbnb.okreplay:junit:$okreplayVersion")
+
+    val mockkVersion = "1.9.3"
+    testImplementation("io.mockk:mockk:$mockkVersion")
+    testImplementation("io.mockk:mockk-dsl:$mockkVersion")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
