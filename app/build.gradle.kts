@@ -65,6 +65,7 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-moshi:$retrofitVersion")
 
     testImplementation("junit:junit:4.13.2")
+    testImplementation("org.amshove.kluent:kluent:1.65")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
