@@ -54,6 +54,14 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:$hiltVersion")
     // endregion
 
+    // region Paging
+    val pagingVersion = "3.0.0"
+
+    implementation("androidx.paging:paging-runtime:$pagingVersion")
+    testImplementation("androidx.paging:paging-common:$pagingVersion")
+    implementation("androidx.paging:paging-compose:1.0.0-alpha09")
+    // endregion
+
     implementation("androidx.core:core-ktx:1.5.0")
     implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.3.0")
