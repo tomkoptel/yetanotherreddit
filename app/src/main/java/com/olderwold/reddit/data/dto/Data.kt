@@ -9,7 +9,7 @@ data class Data(
     @Json(name = "after")
     val after: String? = null,
     @Json(name = "before")
-    val before: Any? = null,
+    val before: String? = null,
     @Json(name = "children")
     val children: List<Children>? = null,
     @Json(name = "dist")

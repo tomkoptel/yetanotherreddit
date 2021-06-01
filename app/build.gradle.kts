@@ -54,6 +54,14 @@ dependencies {
     kapt("com.google.dagger:hilt-compiler:$hiltVersion")
     // endregion
 
+    // region Paging
+    val pagingVersion = "3.0.0"
+
+    implementation("androidx.paging:paging-runtime:$pagingVersion")
+    testImplementation("androidx.paging:paging-common:$pagingVersion")
+    implementation("androidx.paging:paging-compose:1.0.0-alpha09")
+    // endregion
+
     implementation("androidx.core:core-ktx:1.5.0")
     implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.3.0")
@@ -91,6 +99,8 @@ dependencies {
     val mockkVersion = "1.9.3"
     testImplementation("io.mockk:mockk:$mockkVersion")
     testImplementation("io.mockk:mockk-dsl:$mockkVersion")
+
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3")
 
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
