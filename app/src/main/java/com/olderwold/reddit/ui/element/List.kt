@@ -1,28 +1,92 @@
 package com.olderwold.reddit.ui.element
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.material.Card
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.State
-import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.paging.LoadState
+import androidx.paging.compose.LazyPagingItems
+import androidx.paging.compose.collectAsLazyPagingItems
+import androidx.paging.compose.itemsIndexed
 import com.olderwold.reddit.MainViewModel
+import com.olderwold.reddit.domain.FeedItem
 
 @Composable
-fun RedditHotList(mainViewModel: MainViewModel) {
-    val feed: State<MainViewModel.Feed> = mainViewModel.feedState.collectAsState()
-    val items = feed.value.items
-    val lastIndex = items.lastIndex
-    LazyColumn {
-        itemsIndexed(items) { index, item ->
-            Text(item)
+internal fun RedditHotList(mainViewModel: MainViewModel) {
+    val pager = remember { mainViewModel.pager }
+    val lazyPagingItems: LazyPagingItems<FeedItem> = pager.flow.collectAsLazyPagingItems()
 
-            if (lastIndex == index) {
-                LaunchedEffect(Unit) {
-                    mainViewModel.loadMore()
-                }
+    LazyColumn {
+        if (lazyPagingItems.loadState.refresh == LoadState.Loading) {
+            item { Waiting() }
+        }
+
+        itemsIndexed(lazyPagingItems) { index, item: FeedItem? ->
+            if (item == null) {
+                Waiting()
+            } else {
+                FeedItem(item)
+            }
+        }
+
+        if (lazyPagingItems.loadState.append == LoadState.Loading) {
+            item {
+                CircularProgressIndicator(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentWidth(Alignment.CenterHorizontally)
+                )
             }
         }
     }
+}
+
+@Composable
+@Preview(showBackground = true)
+internal fun FeedItem(@PreviewParameter(provider = FeedItemProvider::class) item: FeedItem) {
+    Card(
+        modifier = Modifier.fillMaxWidth().padding(8.dp),
+        elevation = 8.dp
+    ) {
+        Column(
+            modifier = Modifier.fillMaxWidth().padding(8.dp),
+        ) {
+            Text(item.id, fontSize = 20.sp)
+            if (!item.author.isNullOrEmpty()) {
+                Text("${item.author}", fontSize = 20.sp)
+            }
+            if (!item.title.isNullOrEmpty()) {
+                Text("${item.title}", fontSize = 15.sp)
+            }
+        }
+    }
+}
+
+@Composable
+internal fun Waiting() {
+    Text(
+        text = "Waiting for items to load from the backend",
+        modifier = Modifier
+            .fillMaxWidth(fraction = 1f)
+            .wrapContentWidth(Alignment.CenterHorizontally)
+    )
+}
+
+internal class FeedItemProvider : PreviewParameterProvider<FeedItem> {
+    override val values: Sequence<FeedItem> = sequenceOf(
+        FeedItem(id = "id", author = "Frodo", title = "My Precious")
+    )
 }

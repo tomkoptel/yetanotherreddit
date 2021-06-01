@@ -2,6 +2,8 @@ package com.olderwold.reddit.data
 
 import com.olderwold.reddit.data.dto.RedditHot
 import com.olderwold.reddit.data.dto.RedditHotJsonAdapter
+import com.olderwold.reddit.domain.FeedItem
+import com.olderwold.reddit.domain.FeedPage
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -13,7 +15,7 @@ interface RedditClient {
     suspend fun hotListing(
         limit: Int,
         after: String? = null
-    ): List<String>
+    ): FeedPage
 
     companion object {
         operator fun invoke(
@@ -49,9 +51,28 @@ interface RedditClient {
         override suspend fun hotListing(
             limit: Int,
             after: String?
-        ): List<String> {
-            return api.hotListing(limit = limit, after = after)
-                .data?.children?.mapNotNull { it.kind }.orEmpty()
+        ): FeedPage {
+            val hotListing = api.hotListing(limit = limit, after = after)
+            val data = hotListing.data?.children?.mapNotNull { children ->
+                val data = children.data
+                val id = data?.id
+
+                if (id == null) {
+                    null
+                } else {
+                    FeedItem(
+                        id = id,
+                        title = data.title,
+                        author = data.author
+                    )
+                }
+            }.orEmpty()
+
+            return FeedPage(
+                data = data,
+                nextKey = hotListing.data?.after,
+                prevKey = hotListing.data?.before
+            )
         }
     }
 

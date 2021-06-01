@@ -8,21 +8,13 @@ import org.junit.Test
 import org.junit.rules.TestRule
 
 class RedditClientTest {
-    private val okReplayInterceptor = OkReplayInterceptor()
-    private val configuration = OkReplayConfig.Builder()
-        .defaultMode(TapeMode.READ_ONLY)
-        .sslEnabled(true)
-        .interceptor(okReplayInterceptor)
-        .build()
-    private val api = RedditClient { addInterceptor(okReplayInterceptor) }
-
     @get:Rule
-    val testRule: TestRule = RecorderRule(configuration)
+    val testRule = tape()
 
     @Test
     @OkReplay
     fun smokeTest(): Unit = runBlocking {
-        val hotListing = api.hotListing(limit = 1)
-        hotListing.shouldNotBeEmpty()
+        val hotListing = testRule.api.hotListing(limit = 1)
+        hotListing.data.shouldNotBeEmpty()
     }
 }

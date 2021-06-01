@@ -100,6 +100,8 @@ dependencies {
     testImplementation("io.mockk:mockk:$mockkVersion")
     testImplementation("io.mockk:mockk-dsl:$mockkVersion")
 
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.4.3")
+
     androidTestImplementation("androidx.test.ext:junit:1.1.2")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.3.0")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:$composeVersion")
