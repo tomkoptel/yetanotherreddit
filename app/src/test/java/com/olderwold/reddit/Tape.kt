@@ -1,5 +1,6 @@
-package com.olderwold.reddit.data
+package com.olderwold.reddit
 
+import com.olderwold.reddit.data.RedditClient
 import okreplay.OkReplayConfig
 import okreplay.OkReplayInterceptor
 import okreplay.RecorderRule
