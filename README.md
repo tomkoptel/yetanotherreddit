@@ -6,4 +6,4 @@
 You can find the latest version inside [Actions Tab](https://github.com/tomkoptel/sliide-task/actions).
 
 # App
-![App](https://github.com/tomkoptel/yetanotherreddit/blob/master/app.gif?raw=true)
+![App](https://github.com/tomkoptel/yetanotherreddit/blob/develop/app.gif?raw=true)
