@@ -24,12 +24,12 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemsIndexed
 import com.olderwold.reddit.MainViewModel
 import com.olderwold.reddit.domain.FeedItem
-import com.olderwold.reddit.feed.ChromeTab
+import com.olderwold.reddit.feed.WebPage
 
 @Composable
 internal fun RedditHotList(
     mainViewModel: MainViewModel,
-    chromeTab: ChromeTab
+    webPage: WebPage
 ) {
     val pager = remember { mainViewModel.pager }
     val lazyPagingItems: LazyPagingItems<FeedItem> = pager.flow.collectAsLazyPagingItems()
@@ -44,7 +44,7 @@ internal fun RedditHotList(
                 Waiting()
             } else {
                 FeedItem(item, onItemClicked = {
-                    item.url?.let(chromeTab::open)
+                    item.url?.let(webPage::open)
                 })
             }
         }
@@ -65,7 +65,7 @@ internal fun RedditHotList(
 @Preview(showBackground = true)
 internal fun FeedItem(
     @PreviewParameter(provider = FeedItemProvider::class) item: FeedItem,
-    onItemClicked: () -> Unit
+    onItemClicked: () -> Unit = {}
 ) {
     Card(
         modifier = Modifier

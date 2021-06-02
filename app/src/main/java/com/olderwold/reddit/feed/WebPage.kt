@@ -8,7 +8,7 @@ import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 
 @ActivityScoped
-internal class ChromeTab @Inject constructor(
+internal class WebPage @Inject constructor(
     private val activity: Activity,
 ){
     @set:RestrictTo(RestrictTo.Scope.TESTS)

@@ -8,12 +8,12 @@ import io.mockk.spyk
 import io.mockk.verify
 import org.junit.Test
 
-class ChromeTabTest {
+class WebPageTest {
     private val activity = mockk<Activity>()
     private val mockCustomTabsIntent = mockk<CustomTabsIntent>(relaxed = true)
     private val mockUri = mockk<Uri>()
     private val uriParser = spyk<(String) -> Uri>({ mockUri })
-    private val chromeTab = ChromeTab(activity)
+    private val chromeTab = WebPage(activity)
         .apply {
             customTabsIntent = { mockCustomTabsIntent }
             uri = uriParser
