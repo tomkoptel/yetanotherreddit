@@ -43,6 +43,11 @@ android {
         kotlinCompilerExtensionVersion = composeVersion
         kotlinCompilerVersion = "1.4.32"
     }
+    testOptions {
+        unitTests {
+            isReturnDefaultValues = true
+        }
+    }
 }
 
 dependencies {
