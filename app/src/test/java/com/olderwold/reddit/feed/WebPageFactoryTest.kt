@@ -2,13 +2,18 @@ package com.olderwold.reddit.feed
 
 import android.app.Activity
 import android.app.Application
+import android.content.pm.PackageManager
+import android.content.pm.ResolveInfo
 import io.mockk.every
 import io.mockk.mockk
 import org.amshove.kluent.shouldBeInstanceOf
 import org.junit.Test
 
 class WebPageFactoryTest {
-    private val application = mockk<Application>(relaxed = true)
+    private val mockPackageManager = mockk<PackageManager>()
+    private val application = mockk<Application>() {
+        every { packageManager } returns mockPackageManager
+    }
     private val activity = mockk<Activity>()
     private val webPageFactory = WebPage.Factory(application)
 
@@ -27,6 +32,11 @@ class WebPageFactoryTest {
     }
 
     private fun givenChromeTabs(supported: Boolean) {
-        every { application.bindService(any(), any(), any()) } returns supported
+        val resolvedInfo = if (supported) {
+            mutableListOf(mockk<ResolveInfo>())
+        } else {
+            mutableListOf()
+        }
+        every { mockPackageManager.queryIntentServices(any(), any()) } returns resolvedInfo
     }
 }
