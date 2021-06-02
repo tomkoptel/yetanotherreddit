@@ -1,4 +1,4 @@
-package com.olderwold.reddit.ui
+package com.olderwold.reddit.feature.feed
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -10,7 +10,7 @@ import java.io.IOException
 import javax.inject.Inject
 
 @Reusable
-internal class RedditPagingSource @Inject constructor(
+internal class FeedPagingSource @Inject constructor(
     private val getFeedPage: GetFeedPage,
 ) : PagingSource<String, FeedItem>() {
     override fun getRefreshKey(state: PagingState<String, FeedItem>): String? {

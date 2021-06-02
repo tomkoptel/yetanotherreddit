@@ -1,4 +1,4 @@
-package com.olderwold.reddit.ui
+package com.olderwold.reddit.feature.feed
 
 import androidx.paging.PagingSource
 import com.olderwold.reddit.data.NetworkGetFeedPage
@@ -11,7 +11,7 @@ import org.amshove.kluent.shouldNotBeEmpty
 import org.junit.Rule
 import org.junit.Test
 
-class RedditPagingSourceTest {
+class FeedPagingSourceTest {
     @get:Rule
     internal val testRule = tape()
 
@@ -19,7 +19,7 @@ class RedditPagingSourceTest {
     @OkReplay(tape = "smoke_test")
     fun `load should succeed with loading the data from the tape`(): Unit = runBlocking {
         val redditClient = NetworkGetFeedPage(testRule.api, RedditHot.Mapper())
-        val pagingSource = RedditPagingSource(redditClient)
+        val pagingSource = FeedPagingSource(redditClient)
 
         val loadParams = PagingSource.LoadParams.Refresh<String>(
             key = null,

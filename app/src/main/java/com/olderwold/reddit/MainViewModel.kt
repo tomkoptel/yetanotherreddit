@@ -4,13 +4,13 @@ import androidx.lifecycle.ViewModel
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.olderwold.reddit.domain.FeedItem
-import com.olderwold.reddit.ui.RedditPagingSource
+import com.olderwold.reddit.feature.feed.FeedPagingSource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 internal class MainViewModel @Inject constructor(
-    private val pagingSource: RedditPagingSource,
+    private val pagingSource: FeedPagingSource,
 ) : ViewModel() {
     val pager: Pager<String, FeedItem>
         get() = Pager(
