@@ -96,6 +96,8 @@ dependencies {
     testImplementation("org.amshove.kluent:kluent:1.65")
     // endregion
 
+    implementation("androidx.browser:browser:1.3.0")
+
     val mockkVersion = "1.9.3"
     testImplementation("io.mockk:mockk:$mockkVersion")
     testImplementation("io.mockk:mockk-dsl:$mockkVersion")
