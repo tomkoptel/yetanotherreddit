@@ -24,7 +24,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemsIndexed
 import com.olderwold.reddit.MainViewModel
 import com.olderwold.reddit.domain.FeedItem
-import com.olderwold.reddit.web.WebPage
+import com.olderwold.reddit.feature.web.WebPage
 
 @Composable
 internal fun RedditHotList(

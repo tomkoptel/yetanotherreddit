@@ -7,9 +7,9 @@ import androidx.activity.viewModels
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import com.olderwold.reddit.MainViewModel
+import com.olderwold.reddit.feature.web.WebPage
 import com.olderwold.reddit.ui.element.RedditHotList
 import com.olderwold.reddit.ui.theme.YetanotherredditTheme
-import com.olderwold.reddit.web.WebPage
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
