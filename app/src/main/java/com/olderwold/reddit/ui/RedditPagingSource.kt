@@ -2,8 +2,8 @@ package com.olderwold.reddit.ui
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.olderwold.reddit.data.RedditClient
 import com.olderwold.reddit.domain.FeedItem
+import com.olderwold.reddit.domain.GetFeedPage
 import dagger.Reusable
 import retrofit2.HttpException
 import java.io.IOException
@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 @Reusable
 internal class RedditPagingSource @Inject constructor(
-    private val redditClient: RedditClient,
+    private val getFeedPage: GetFeedPage,
 ) : PagingSource<String, FeedItem>() {
     override fun getRefreshKey(state: PagingState<String, FeedItem>): String? {
         return state.anchorPosition?.let { anchorPosition ->
@@ -22,7 +22,7 @@ internal class RedditPagingSource @Inject constructor(
 
     override suspend fun load(params: LoadParams<String>): LoadResult<String, FeedItem> {
         return try {
-            val feedPage = redditClient.hotListing(params.loadSize - 1, params.key)
+            val feedPage = getFeedPage(params.loadSize - 1, params.key)
             LoadResult.Page(
                 data = feedPage.data,
                 prevKey = feedPage.prevKey,
