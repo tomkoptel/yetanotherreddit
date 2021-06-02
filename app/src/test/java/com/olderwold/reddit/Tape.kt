@@ -1,6 +1,6 @@
 package com.olderwold.reddit
 
-import com.olderwold.reddit.data.RedditApi
+import com.olderwold.reddit.feature.feed.data.RedditApi
 import okreplay.OkReplayConfig
 import okreplay.OkReplayInterceptor
 import okreplay.RecorderRule
