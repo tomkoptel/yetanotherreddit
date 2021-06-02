@@ -1,5 +1,6 @@
 package com.olderwold.reddit.ui.element
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -23,9 +24,13 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemsIndexed
 import com.olderwold.reddit.MainViewModel
 import com.olderwold.reddit.domain.FeedItem
+import com.olderwold.reddit.web.WebPage
 
 @Composable
-internal fun RedditHotList(mainViewModel: MainViewModel) {
+internal fun RedditHotList(
+    mainViewModel: MainViewModel,
+    webPage: WebPage
+) {
     val pager = remember { mainViewModel.pager }
     val lazyPagingItems: LazyPagingItems<FeedItem> = pager.flow.collectAsLazyPagingItems()
 
@@ -38,7 +43,9 @@ internal fun RedditHotList(mainViewModel: MainViewModel) {
             if (item == null) {
                 Waiting()
             } else {
-                FeedItem(item)
+                FeedItem(item, onItemClicked = {
+                    item.url?.let(webPage::open)
+                })
             }
         }
 
@@ -56,13 +63,22 @@ internal fun RedditHotList(mainViewModel: MainViewModel) {
 
 @Composable
 @Preview(showBackground = true)
-internal fun FeedItem(@PreviewParameter(provider = FeedItemProvider::class) item: FeedItem) {
+internal fun FeedItem(
+    @PreviewParameter(provider = FeedItemProvider::class) item: FeedItem,
+    onItemClicked: () -> Unit = {}
+) {
     Card(
-        modifier = Modifier.fillMaxWidth().padding(8.dp),
-        elevation = 8.dp
-    ) {
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(8.dp)
+            .clickable { onItemClicked() },
+        elevation = 8.dp,
+
+        ) {
         Column(
-            modifier = Modifier.fillMaxWidth().padding(8.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(8.dp),
         ) {
             Text(item.id, fontSize = 20.sp)
             if (!item.author.isNullOrEmpty()) {
@@ -87,6 +103,11 @@ internal fun Waiting() {
 
 internal class FeedItemProvider : PreviewParameterProvider<FeedItem> {
     override val values: Sequence<FeedItem> = sequenceOf(
-        FeedItem(id = "id", author = "Frodo", title = "My Precious")
+        FeedItem(
+            id = "id",
+            author = "Frodo",
+            title = "My Precious",
+            url = "https://nebuchadnezzar.com/"
+        )
     )
 }

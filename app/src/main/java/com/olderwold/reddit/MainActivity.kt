@@ -8,18 +8,23 @@ import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import com.olderwold.reddit.ui.element.RedditHotList
 import com.olderwold.reddit.ui.theme.YetanotherredditTheme
+import com.olderwold.reddit.web.WebPage
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     private val mainViewModel: MainViewModel by viewModels()
+
+    @Inject
+    internal lateinit var webPage: WebPage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
             YetanotherredditTheme {
                 Surface(color = MaterialTheme.colors.background) {
-                    RedditHotList(mainViewModel)
+                    RedditHotList(mainViewModel, webPage)
                 }
             }
         }

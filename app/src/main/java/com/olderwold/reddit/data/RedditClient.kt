@@ -63,7 +63,8 @@ interface RedditClient {
                     FeedItem(
                         id = id,
                         title = data.title,
-                        author = data.author
+                        author = data.author,
+                        url = data.url
                     )
                 }
             }.orEmpty()

@@ -43,6 +43,11 @@ android {
         kotlinCompilerExtensionVersion = composeVersion
         kotlinCompilerVersion = "1.4.32"
     }
+    testOptions {
+        unitTests {
+            isReturnDefaultValues = true
+        }
+    }
 }
 
 dependencies {
@@ -95,6 +100,8 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.amshove.kluent:kluent:1.65")
     // endregion
+
+    implementation("androidx.browser:browser:1.3.0")
 
     val mockkVersion = "1.9.3"
     testImplementation("io.mockk:mockk:$mockkVersion")
