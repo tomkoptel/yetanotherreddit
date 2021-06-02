@@ -1,14 +1,13 @@
 package com.olderwold.reddit
 
-import com.olderwold.reddit.data.RedditClient
+import com.olderwold.reddit.data.RedditApi
 import okreplay.OkReplayConfig
 import okreplay.OkReplayInterceptor
 import okreplay.RecorderRule
 import okreplay.TapeMode
-import org.junit.Rule
 import org.junit.rules.TestRule
 
-fun tape(builder: OkReplayConfig.Builder.() -> Unit = {}): TapeRule {
+internal fun tape(builder: OkReplayConfig.Builder.() -> Unit = {}): TapeRule {
     val okReplayInterceptor = OkReplayInterceptor()
     val configuration = OkReplayConfig.Builder()
         .defaultMode(TapeMode.READ_ONLY)
@@ -19,11 +18,11 @@ fun tape(builder: OkReplayConfig.Builder.() -> Unit = {}): TapeRule {
 
     return TapeRule(
         delegate = RecorderRule(configuration),
-        api = RedditClient { addInterceptor(okReplayInterceptor) }
+        api = RedditApi { addInterceptor(okReplayInterceptor) }
     )
 }
 
-class TapeRule(
+internal class TapeRule(
     private val delegate: TestRule,
-    val api: RedditClient,
+    val api: RedditApi,
 ) : TestRule by delegate

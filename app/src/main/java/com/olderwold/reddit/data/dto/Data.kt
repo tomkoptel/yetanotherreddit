@@ -11,7 +11,7 @@ data class Data(
     @Json(name = "before")
     val before: String? = null,
     @Json(name = "children")
-    val children: List<Children>? = null,
+    val children: List<Children?>? = null,
     @Json(name = "dist")
     val dist: Int? = null,
     @Json(name = "modhash")
