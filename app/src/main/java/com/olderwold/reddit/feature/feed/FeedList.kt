@@ -1,4 +1,4 @@
-package com.olderwold.reddit.ui.element
+package com.olderwold.reddit.feature.feed
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
