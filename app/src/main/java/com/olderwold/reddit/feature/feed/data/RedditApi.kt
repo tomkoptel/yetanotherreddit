@@ -1,7 +1,7 @@
-package com.olderwold.reddit.data
+package com.olderwold.reddit.feature.feed.data
 
-import com.olderwold.reddit.data.dto.RedditHot
-import com.olderwold.reddit.data.dto.RedditHotJsonAdapter
+import com.olderwold.reddit.feature.feed.data.dto.RedditHot
+import com.olderwold.reddit.feature.feed.data.dto.RedditHotJsonAdapter
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit

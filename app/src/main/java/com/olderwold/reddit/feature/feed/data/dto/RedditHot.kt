@@ -1,8 +1,8 @@
-package com.olderwold.reddit.data.dto
+package com.olderwold.reddit.feature.feed.data.dto
 
 
 import androidx.annotation.RestrictTo
-import com.olderwold.reddit.domain.FeedPage
+import com.olderwold.reddit.feature.feed.domain.FeedPage
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import dagger.Reusable

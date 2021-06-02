@@ -1,8 +1,8 @@
-package com.olderwold.reddit.data
+package com.olderwold.reddit.feature.feed.data
 
-import com.olderwold.reddit.data.dto.RedditHot
-import com.olderwold.reddit.domain.FeedPage
-import com.olderwold.reddit.domain.GetFeedPage
+import com.olderwold.reddit.feature.feed.data.dto.RedditHot
+import com.olderwold.reddit.feature.feed.domain.FeedPage
+import com.olderwold.reddit.feature.feed.domain.GetFeedPage
 import dagger.Binds
 import dagger.Reusable
 import dagger.hilt.InstallIn

@@ -1,6 +1,6 @@
-package com.olderwold.reddit.data.dto
+package com.olderwold.reddit.feature.feed.data.dto
 
-import com.olderwold.reddit.domain.FeedItem
+import com.olderwold.reddit.feature.feed.domain.FeedItem
 import io.mockk.every
 import io.mockk.mockk
 import org.amshove.kluent.shouldBeEqualTo

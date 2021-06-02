@@ -2,8 +2,8 @@ package com.olderwold.reddit.feature.feed
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.olderwold.reddit.domain.FeedItem
-import com.olderwold.reddit.domain.GetFeedPage
+import com.olderwold.reddit.feature.feed.domain.FeedItem
+import com.olderwold.reddit.feature.feed.domain.GetFeedPage
 import dagger.Reusable
 import retrofit2.HttpException
 import java.io.IOException

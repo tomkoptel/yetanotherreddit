@@ -1,7 +1,7 @@
-package com.olderwold.reddit.data.dto
+package com.olderwold.reddit.feature.feed.data.dto
 
-import com.olderwold.reddit.domain.FeedItem
-import com.olderwold.reddit.domain.FeedPage
+import com.olderwold.reddit.feature.feed.domain.FeedItem
+import com.olderwold.reddit.feature.feed.domain.FeedPage
 import io.mockk.Called
 import io.mockk.every
 import io.mockk.mockk

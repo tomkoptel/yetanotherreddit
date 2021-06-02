@@ -1,9 +1,9 @@
 package com.olderwold.reddit.feature.feed
 
 import androidx.paging.PagingSource
-import com.olderwold.reddit.data.NetworkGetFeedPage
-import com.olderwold.reddit.data.dto.RedditHot
-import com.olderwold.reddit.domain.FeedItem
+import com.olderwold.reddit.feature.feed.data.NetworkGetFeedPage
+import com.olderwold.reddit.feature.feed.data.dto.RedditHot
+import com.olderwold.reddit.feature.feed.domain.FeedItem
 import com.olderwold.reddit.tape
 import kotlinx.coroutines.runBlocking
 import okreplay.OkReplay

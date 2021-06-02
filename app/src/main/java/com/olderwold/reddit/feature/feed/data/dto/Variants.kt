@@ -1,8 +1,8 @@
-package com.olderwold.reddit.data.dto
+package com.olderwold.reddit.feature.feed.data.dto
 
 
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
-class MediaEmbed(
+class Variants(
 )

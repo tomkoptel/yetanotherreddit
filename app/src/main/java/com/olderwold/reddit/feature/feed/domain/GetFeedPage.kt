@@ -1,4 +1,4 @@
-package com.olderwold.reddit.domain
+package com.olderwold.reddit.feature.feed.domain
 
 interface GetFeedPage {
     suspend operator fun invoke(

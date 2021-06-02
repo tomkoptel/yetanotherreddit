@@ -1,4 +1,4 @@
-package com.olderwold.reddit.data
+package com.olderwold.reddit.feature.feed.data
 
 import com.olderwold.reddit.tape
 import kotlinx.coroutines.runBlocking
