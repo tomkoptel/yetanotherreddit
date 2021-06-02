@@ -1,4 +1,4 @@
-package com.olderwold.reddit.feed
+package com.olderwold.reddit.web
 
 import android.app.Activity
 import android.net.Uri
