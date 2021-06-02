@@ -22,16 +22,15 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemsIndexed
-import com.olderwold.reddit.MainViewModel
 import com.olderwold.reddit.feature.feed.domain.FeedItem
 import com.olderwold.reddit.feature.web.WebPage
 
 @Composable
 internal fun RedditHotList(
-    mainViewModel: MainViewModel,
+    feedViewModel: FeedViewModel,
     webPage: WebPage
 ) {
-    val pager = remember { mainViewModel.pager }
+    val pager = remember { feedViewModel.pager }
     val lazyPagingItems: LazyPagingItems<FeedItem> = pager.flow.collectAsLazyPagingItems()
 
     LazyColumn {
