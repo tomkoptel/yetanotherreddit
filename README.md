@@ -1,4 +1,4 @@
-# Profile Demo App
+# Reddit Client Demo App
 
 ![Android CI with Gradle](https://github.com/tomkoptel/yetanotherreddit/workflows/Android%20CI%20with%20Gradle/badge.svg)
 
