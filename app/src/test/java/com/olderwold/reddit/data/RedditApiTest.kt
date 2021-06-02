@@ -2,20 +2,19 @@ package com.olderwold.reddit.data
 
 import com.olderwold.reddit.tape
 import kotlinx.coroutines.runBlocking
-import okreplay.*
+import okreplay.OkReplay
 import org.amshove.kluent.shouldNotBeEmpty
 import org.junit.Rule
 import org.junit.Test
-import org.junit.rules.TestRule
 
-class RedditClientTest {
+class RedditApiTest {
     @get:Rule
-    val testRule = tape()
+    internal val testRule = tape()
 
     @Test
     @OkReplay
     fun smokeTest(): Unit = runBlocking {
         val hotListing = testRule.api.hotListing(limit = 1)
-        hotListing.data.shouldNotBeEmpty()
+        hotListing.data?.children!!.shouldNotBeEmpty()
     }
 }

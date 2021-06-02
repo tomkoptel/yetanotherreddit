@@ -13,8 +13,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 internal class RedditClientModule {
     @Provides
     @Reusable
-    fun client(): RedditClient {
-        return RedditClient {
+    fun redditApi(): RedditApi {
+        return RedditApi {
             if (BuildConfig.DEBUG) {
                 addInterceptor(HttpLoggingInterceptor().apply {
                     level = HttpLoggingInterceptor.Level.BODY

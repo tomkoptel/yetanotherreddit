@@ -54,9 +54,15 @@ dependencies {
     // region Dagger Hilt
     val hiltVersion: String by project
 
-    kapt("androidx.hilt:hilt-compiler:1.0.0")
     implementation("com.google.dagger:hilt-android:$hiltVersion")
-    kapt("com.google.dagger:hilt-compiler:$hiltVersion")
+    "androidx.hilt:hilt-compiler:1.0.0".let {
+        kapt(it)
+        kaptTest(it)
+    }
+    "com.google.dagger:hilt-compiler:$hiltVersion".let {
+        kapt(it)
+        kaptTest(it)
+    }
     // endregion
 
     // region Paging
