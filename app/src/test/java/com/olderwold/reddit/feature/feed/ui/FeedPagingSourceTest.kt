@@ -1,4 +1,4 @@
-package com.olderwold.reddit.feature.feed
+package com.olderwold.reddit.feature.feed.ui
 
 import androidx.paging.PagingSource
 import com.olderwold.reddit.feature.feed.data.NetworkGetFeedPage
