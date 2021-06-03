@@ -36,7 +36,7 @@ the mobile browse when we display web page.
 The solution build in mind with the fallback strategy if the Custom Chrome Tabs not supported on device (e.g Chinese market).
 The organisation of classes described on the following diagram.
 
-![Web](./docs/pics/web.png)
+<img src="./docs/pics/web.png" width="508px" height="220px" alt="Web Architecture"/>
 
 We do rely on the Factory pattern to pick the supported implementation of `WebPage` interfaces during the injection phase.
 The `WebPage` API scoped to Activity lifecycle, so we do receive for every new instance of Activity new instance of the implementation.
