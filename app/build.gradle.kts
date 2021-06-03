@@ -37,7 +37,15 @@ android {
         useIR = true
     }
     buildFeatures {
+        dataBinding = false
+        mlModelBinding = false
+        viewBinding = false
         compose = true
+        buildConfig = false
+        prefab = false
+        renderScript = false
+        resValues = false
+        shaders = false
     }
     composeOptions {
         kotlinCompilerExtensionVersion = composeVersion
