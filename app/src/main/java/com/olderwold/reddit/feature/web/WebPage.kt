@@ -3,7 +3,6 @@ package com.olderwold.reddit.feature.web
 import android.app.Activity
 import android.app.Application
 import android.content.Intent
-import android.content.pm.ResolveInfo
 import android.util.Log
 import dagger.Reusable
 import javax.inject.Inject
@@ -31,8 +30,9 @@ internal interface WebPage {
         private fun isChromeCustomTabsSupported(): Boolean {
             val serviceIntent = Intent("android.support.customtabs.action.CustomTabsService")
             serviceIntent.setPackage("com.android.chrome")
-            val resolveInfos: MutableList<ResolveInfo> = application.packageManager.queryIntentServices(serviceIntent, 0)
-            return resolveInfos.isNotEmpty()
+            return application.packageManager
+                .queryIntentServices(serviceIntent, 0)
+                .isNotEmpty()
         }
     }
 }

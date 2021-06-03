@@ -1,6 +1,5 @@
 package com.olderwold.reddit.feature.feed.data.dto
 
-
 import com.olderwold.reddit.feature.feed.domain.FeedItem
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
@@ -10,7 +9,7 @@ import javax.inject.Inject
 @JsonClass(generateAdapter = true)
 data class Children(
     @Json(name = "data")
-    val `data`: DataX? = null,
+    val data: DataX? = null,
     @Json(name = "kind")
     val kind: String? = null
 ) {

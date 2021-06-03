@@ -1,6 +1,5 @@
 package com.olderwold.reddit.feature.feed.data.dto
 
-
 import androidx.annotation.RestrictTo
 import com.olderwold.reddit.feature.feed.domain.FeedPage
 import com.squareup.moshi.Json
@@ -11,7 +10,7 @@ import javax.inject.Inject
 @JsonClass(generateAdapter = true)
 data class RedditHot(
     @Json(name = "data")
-    val `data`: Data? = null,
+    val data: Data? = null,
     @Json(name = "kind")
     val kind: String? = null
 ) {

@@ -13,6 +13,10 @@ buildscript {
     }
 }
 
+plugins {
+    id("com.olderwold.reddit.config.kotlin.checks")
+}
+
 tasks.register<Delete>("clean") {
     delete(rootProject.buildDir)
 }

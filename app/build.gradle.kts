@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     kotlin("kapt")
     id("dagger.hilt.android.plugin")
+    id("com.olderwold.reddit.config.kotlin.checks")
 }
 
 val composeVersion = "1.0.0-beta07"

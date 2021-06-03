@@ -10,7 +10,7 @@ import javax.inject.Inject
 @ActivityScoped
 internal class ChromeTabWebPage@Inject constructor(
     private val activity: Activity,
-): WebPage {
+) : WebPage {
     @set:RestrictTo(RestrictTo.Scope.TESTS)
     var customTabsIntent: () -> CustomTabsIntent = {
         CustomTabsIntent.Builder().build()

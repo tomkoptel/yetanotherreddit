@@ -22,7 +22,7 @@ internal class WebViewPage @Inject constructor(
         try {
             activity.startActivity(actionIntent(url))
         } catch (ex: ActivityNotFoundException) {
-            Log.i("WebViewPage", "Can not resolved activity for url=$url")
+            Log.i("WebViewPage", "Can not resolved activity for url=$url", ex)
         }
     }
 }
