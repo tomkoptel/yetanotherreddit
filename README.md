@@ -27,6 +27,17 @@ The app packages:
 - $companyPackage.feature.web (implementation of web navigation)
 - $companyPackage.lib.okhhtp (utilities used to implement file based caching)
 
+The web navigation build on the basis of [Custom Chrome Tabs](https://developer.chrome.com/docs/android/custom-tabs/overview/).
+Custom Chrome Tabs library allows us to keep immersive experience without forcing out the user to
+the mobile browse when we display web page.
+The solution build in mind with the fallback strategy if the Custom Chrome Tabs not supported on device (e.g Chinese market).
+The organisation of classes described on the following diagram.
+
+![Web](./docs/pics/web.png)
+
+We do rely on the Factory pattern to pick the supported implementation of `WebPage` interfaces during the injection phase.
+The `WebPage` API scoped to Activity lifecycle, so we do receive for every new instance of Activity new instance of the implementation.
+
 # Libraries
 Networking stack
 - [Moshi](https://github.com/square/moshi)
