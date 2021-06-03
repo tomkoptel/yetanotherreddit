@@ -40,7 +40,7 @@ android {
         mlModelBinding = false
         viewBinding = false
         compose = true
-        buildConfig = false
+        buildConfig = true
         prefab = false
         renderScript = false
         resValues = false
