@@ -42,9 +42,12 @@ internal fun RedditHotList(
             if (item == null) {
                 Waiting()
             } else {
-                FeedItem(item, onItemClicked = {
-                    item.url?.let(webPage::open)
-                })
+                FeedItem(
+                    item,
+                    onItemClicked = {
+                        item.url?.let(webPage::open)
+                    }
+                )
             }
         }
 
@@ -73,7 +76,7 @@ internal fun FeedItem(
             .clickable { onItemClicked() },
         elevation = 8.dp,
 
-        ) {
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxWidth()
