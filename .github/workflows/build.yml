@@ -8,7 +8,7 @@ on:
 
 jobs:
   test:
-    name: Run Unit Tests & Perform Checks
+    name: Execut Gradle Checks (Unit tests + Static Analysis)
     runs-on: ubuntu-latest
 
     steps:
@@ -32,10 +32,8 @@ jobs:
           key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
           restore-keys: |
             ${{ runner.os }}-gradle-
-      - name: Lint Debug
-        run: bash ./gradlew lintDebug --stacktrace
-      - name: Unit Test Debug
-        run: ./gradlew testDebugUnitTest --stacktrace
+      - name: Gradle Check
+        run: bash ./gradlew check --stacktrace
 
   apk:
     name: Generate APK
