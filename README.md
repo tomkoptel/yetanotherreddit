@@ -2,9 +2,15 @@
 
 ![Android CI with Gradle](https://github.com/tomkoptel/yetanotherreddit/workflows/Android%20CI%20with%20Gradle/badge.svg)
 
+# Quality Assurance
 ## CI
 The following projects relies on [Github Actions](https://github.com/features/actions).
 As part of each new pull request we do execute `./gradlew check` and build debug version of application.
+
+## Static Checks
+The following project relies on the [ktlint](https://github.com/pinterest/ktlint) and [detekt](https://github.com/detekt/detekt).
+The plugins configured under the composite build in [build-logic/kotlin-static-checks](./build-logic/kotlin-static-checks).
+The plugin allows us to reapply checks to any future module or composite build.
 
 You can find the latest version inside [Actions Tab](https://github.com/tomkoptel/sliide-task/actions).
 
