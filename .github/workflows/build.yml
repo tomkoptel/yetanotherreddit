@@ -33,7 +33,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-gradle-
       - name: Gradle Check
-        run: bash ./gradlew check --stacktrace
+        run: bash ./gradlew check --info --stacktrace
 
   apk:
     name: Generate APK
