@@ -40,7 +40,6 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = composeVersion
-        kotlinCompilerVersion = "1.4.32"
     }
     testOptions {
         unitTests {
