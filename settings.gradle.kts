@@ -7,4 +7,6 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "yet-another-reddit"
+
+includeBuild("build-logic")
 include(":app")
