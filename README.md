@@ -9,10 +9,10 @@ As part of each new pull request we do execute `./gradlew check` and build debug
 You can find the latest version inside [Actions Tab](https://github.com/tomkoptel/sliide-task/actions).
 
 # App
-![App](https://github.com/tomkoptel/yetanotherreddit/blob/develop/app.gif?raw=true){:height="50%" width="50%"}
+<img src="https://github.com/tomkoptel/yetanotherreddit/blob/develop/app.gif?raw=true" width="432px" height="768px" alt="App In Action"/>
 
 # Architecture
-![Architecture](./docs/pics/architecture.png){:height="50%" width="50%"}
+<img src="./docs/pics/architecture.png" width="1024px" height="200px" alt="App Architecture"/>
 
 According to the state diagram application relies on [the clean architecture](https://www.freecodecamp.org/news/a-quick-introduction-to-clean-architecture-990c014448d2/).
 
