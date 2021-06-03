@@ -12,7 +12,7 @@ You can find the latest version inside [Actions Tab](https://github.com/tomkopte
 <img src="https://github.com/tomkoptel/yetanotherreddit/blob/develop/app.gif?raw=true" width="432px" height="768px" alt="App In Action"/>
 
 # Architecture
-<img src="./docs/pics/architecture.png" width="1024px" height="200px" alt="App Architecture"/>
+<img src="./docs/pics/architecture.png" width="755px" height="683px" alt="App Architecture"/>
 
 According to the state diagram application relies on [the clean architecture](https://www.freecodecamp.org/news/a-quick-introduction-to-clean-architecture-990c014448d2/).
 
