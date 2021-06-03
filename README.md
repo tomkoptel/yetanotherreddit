@@ -18,7 +18,7 @@ The vertical organisation reflected on the package structure that follows:
 
 - $companyPackage.feature.X.data (holds impl of use cases + schema used to pull data)
 - $companyPackage.feature.X.domain (represents plain old Kotlin objects and pure interfaces)
-- $companyPackage.feature.X (represents UI layer)
+- $companyPackage.feature.X.ui (represents UI layer)
 - $companyPackage.lib.Y (represents additional capability used to extend functionality e.g. caching)
 
 The app packages:
@@ -26,7 +26,6 @@ The app packages:
 - $companyPackage.feature.feed (implementation of Reddit list of Hot feeds)
 - $companyPackage.feature.web (implementation of web navigation)
 - $companyPackage.lib.okhhtp (utilities used to implement file based caching)
-- $companyPackage.ui.theme (defaults from the boilerplate used in compose)
 
 # Libraries
 Networking stack
