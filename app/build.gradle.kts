@@ -22,6 +22,9 @@ android {
         }
     }
     buildTypes {
+        named("debug").configure {
+            isTestCoverageEnabled = true
+        }
         maybeCreate("release").apply {
             isMinifyEnabled = false
             proguardFile(getDefaultProguardFile("proguard-android-optimize.txt"))
