@@ -1,0 +1,22 @@
+@startuml
+
+skinparam class  {
+  BackgroundColor<<Impl>> #D6EAF8
+  BackgroundColor<<Api>> #A9DFBF
+}
+
+left to right direction
+
+interface WebPage<<Api>> {
+  +open(url: String)
+}
+
+class WebViewPage<<Impl>> extends WebPage
+class ChromeTabWebPage<<Impl>> extends WebPage
+
+class WebPage.Factory {
+  +create(app: android.app.Application): WebPage
+}
+
+WebPage.Factory -> WebPage
+@enduml
