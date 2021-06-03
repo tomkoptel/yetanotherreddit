@@ -9,7 +9,7 @@ import javax.inject.Inject
 @JsonClass(generateAdapter = true)
 data class Children(
     @Json(name = "data")
-    val `data`: DataX? = null,
+    val data: DataX? = null,
     @Json(name = "kind")
     val kind: String? = null
 ) {

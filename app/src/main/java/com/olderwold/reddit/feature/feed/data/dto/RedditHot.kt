@@ -10,7 +10,7 @@ import javax.inject.Inject
 @JsonClass(generateAdapter = true)
 data class RedditHot(
     @Json(name = "data")
-    val `data`: Data? = null,
+    val data: Data? = null,
     @Json(name = "kind")
     val kind: String? = null
 ) {
