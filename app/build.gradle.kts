@@ -48,7 +48,6 @@ android {
     }
     composeOptions {
         kotlinCompilerExtensionVersion = composeVersion
-        kotlinCompilerVersion = "1.4.32"
     }
     testOptions {
         unitTests {
@@ -74,6 +73,7 @@ dependencies {
     implementation("androidx.paging:paging-compose:1.0.0-alpha09")
     // endregion
 
+    // region Jetpack
     implementation("androidx.core:core-ktx:1.5.0")
     implementation("androidx.appcompat:appcompat:1.3.0")
     implementation("com.google.android.material:material:1.3.0")
@@ -84,6 +84,7 @@ dependencies {
 
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
     implementation("androidx.activity:activity-compose:1.3.0-alpha08")
+    // endregion
 
     // region Network
     val retrofitVersion = "2.9.0"
@@ -108,9 +109,13 @@ dependencies {
     testImplementation("org.amshove.kluent:kluent:1.65")
     // endregion
 
+    // region Navigation
     implementation("androidx.browser:browser:1.3.0")
+    // endregion
 
+    // region Unit Testing
     val mockkVersion = "1.9.3"
     testImplementation("io.mockk:mockk:$mockkVersion")
     testImplementation("io.mockk:mockk-dsl:$mockkVersion")
+    // endregion
 }
