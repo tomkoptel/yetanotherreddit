@@ -1,0 +1,58 @@
+@startuml
+
+top to bottom direction
+
+skinparam state  {
+  BackgroundColor<<Domain>> #D4E6F1
+  BackgroundColor<<UI>> #A2D9CE
+  BackgroundColor<<Data>> #FADBD8
+}
+
+state Domain<<Domain>> {
+    state GetFeedPage<<Domain>>
+    GetFeedPage: Contract interface that represents usecase
+    state FeedPage<<Domain>>
+    FeedPage: Exposes collection of items and metadata for paging
+    state FeedItem<<Domain>>
+    FeedItem: Exposes basic info id, title, url, author
+}
+
+state Data<<Data>> {
+  state ChildrenDto<<Data>>
+  ChildrenDto: Moshi DTO
+  state ChildrenMapper<<Data>>
+  ChildrenMapper: Mapper from DTO to Domain type
+  state RedditHotDto<<Data>>
+  RedditHotDto: Moshi DTO
+  state RedditHotMapper<<Data>>
+  RedditHotMapper: Mapper from DTO to Domain type
+  state NetworkGetFeedPage<<Data>>
+  NetworkGetFeedPage: Concrete implementation of use case that speaks to Reddit network API
+  state RedditApi<<Data>>
+  RedditApi: Retrofit implementation of API client
+}
+
+state View<<UI>> {
+    state FeedList<<UI>>
+    FeedList: Declarative UI with Compose
+    FeedList: Consumes PagingSource to load data
+    state FeedPagingSource<<UI>>
+    FeedPagingSource: Relies on the data layer to load stream of feed
+    state FeedViewModel<<UI>>
+    FeedViewModel: Exposes paging source to the View layer
+}
+GetFeedPage --> FeedPage
+FeedPage --> FeedItem
+ChildrenMapper --> ChildrenDto
+ChildrenMapper --> FeedItem
+RedditHotMapper --> FeedPage
+RedditHotMapper --> RedditHotDto
+RedditHotMapper --> ChildrenMapper
+NetworkGetFeedPage --> RedditHotMapper
+NetworkGetFeedPage --> GetFeedPage
+NetworkGetFeedPage --> RedditApi
+FeedPagingSource --> NetworkGetFeedPage
+FeedViewModel --> FeedPagingSource
+FeedList --> FeedViewModel
+FeedList --> FeedItem
+@enduml
